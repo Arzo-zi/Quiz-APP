@@ -16,6 +16,7 @@ class AnswerButton extends StatelessWidget {
         padding:const EdgeInsets.symmetric(vertical: 10,horizontal: 40,)
       ),
       child:Text(answ,
+      //to center the answers in their buttons
       textAlign: TextAlign.center,
       ),
       );

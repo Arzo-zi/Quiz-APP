@@ -7,6 +7,7 @@ class QuesScreen extends StatefulWidget{
  const QuesScreen({super.key,required this.onSelectAnsw,});
 
           //it should be capetal letter Function not function 
+          //answ =>to save the answers and keep it 
  final void Function(String answ) onSelectAnsw;
 
  @override
@@ -16,6 +17,7 @@ class QuesScreen extends StatefulWidget{
 }
 
 class _QuesScreenState extends State<QuesScreen>{
+  //currentQuestIndex =>to make sure when we select the answer we move on to the second question and so on
 var currentQuestIndex=0;
 
 void answerQuestion(String selctedAnswers){
@@ -31,6 +33,7 @@ setState(() {
 
  @override
  Widget build(context){
+
   final currentQuest=questions[currentQuestIndex];
 
  return  SizedBox(
@@ -42,9 +45,11 @@ setState(() {
       //mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
+
       children: [
          Text(
         currentQuest.quest,
+        //instead of styleform
         style:GoogleFonts.lato(
          color: const Color.fromARGB(255, 223, 163, 233),
          fontSize: 24,
@@ -54,9 +59,14 @@ setState(() {
        ),
        
         const SizedBox(height: 30,),
+        //map get every element in the getShuffledAnswer() and turn it to a widget without change these values in the memory unlike shuffled
+        //... =>to solve problem list(answers) inside list(children)to spreading values
         ...currentQuest.getShuffledAnswer().map((item) {
           return AnswerButton(
             answ: item,
+            //answerQuestion => when we push the answer button the index will increase and the next quest will appear 
+            //                  it also has  selctedAnswers that is call from quiz file (3 widget) the function name (chooseAnswerByUser)
+            //answerQuestion=>now accept an argument which is (String selctedAnswers) so we should add an argument here 
             onTap: (){answerQuestion(item);},
             );
         }),
