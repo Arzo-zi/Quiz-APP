@@ -42,7 +42,7 @@ class _MyQuizState extends State<MyQuiz> {
   if (selctedAnswers.length==questions.length){
     setState(() {
       activeScreen='result-screen';
-      selctedAnswers=[]; 
+    //  selctedAnswers=[]; this list should remove to pass the answers to the result-screen
     });
   }
  }
