@@ -61,7 +61,7 @@ setState(() {
         const SizedBox(height: 30,),
         //map get every element in the getShuffledAnswer() and turn it to a widget without change these values in the memory unlike shuffled
         //... =>to solve problem list(answers) inside list(children)to spreading values
-        ...currentQuest.getShuffledAnswer().map((item) {
+        ...currentQuest.shuffledAnswer.map((item) {
           return AnswerButton(
             answ: item,
             //answerQuestion => when we push the answer button the index will increase and the next quest will appear 

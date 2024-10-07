@@ -8,11 +8,12 @@ class QuizQuestions {
 //List.of =>make the copy to keep the right answer in the first position in data file
 //list here as a class
 //List<String> => because answers is list of string (function)
-
- List<String> getShuffledAnswer(){
+//by get we can use it as proparty
+ List<String> get shuffledAnswer{
  final shuffledList= List.of(answers);
  shuffledList.shuffle();
  return shuffledList;
 
  }
+
 }

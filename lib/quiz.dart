@@ -17,7 +17,8 @@ class MyQuiz extends StatefulWidget {
 }
 
 //we put the container here to fix the color in all screens
-
+//_ tell dart that this class will be private and just use in this file and can not access by another file
+//we can translate any class or funct by add _ before it and we should add it in all the places we mention it in the file (private proparty)
 class _MyQuizState extends State<MyQuiz> {
 //the answers from students to show it later in last screen
  List<String> selctedAnswers=[]; 
@@ -29,6 +30,14 @@ class _MyQuizState extends State<MyQuiz> {
     activeScreen= 'questions screen';
   });
 }
+void switchScreenEnd (){
+ setState(() {
+   selctedAnswers=[];
+   activeScreen='questions screen';
+ });
+
+}
+
 
 // to pass the data via func across widget
 // answ => the answer that appears in the button from answer button file
@@ -60,7 +69,10 @@ class _MyQuizState extends State<MyQuiz> {
     screenWidget= QuesScreen(onSelectAnsw:chooseAnswerByUser,);
    }
    if (activeScreen == 'result-screen'){
-    screenWidget= ResultsScreen(chosenAnsw: selctedAnswers,);
+    screenWidget= ResultsScreen(
+      chosenAnsw: selctedAnswers,
+      onRestart: switchScreenEnd,
+      );
    }
    //go to the questions_screen to accept this argument
 
